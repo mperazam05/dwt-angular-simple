@@ -1,0 +1,6 @@
+<div id="container">
+  <select *ngIf="!bWASM" id="sources"></select><br />
+  <button (click)="acquireImage()">Acquire Images</button>
+  <button *ngIf="!bWASM" (click)="openImage()">Open Documents</button>
+  <div id="dwtcontrolContainer"></div>
+</div>
