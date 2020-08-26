@@ -37,11 +37,11 @@ export class DwtComponent implements OnInit {
     if (this.bWASM) {
       this.DWObject.MouseShape = true;
     } else {
-      let count = this.DWObject.SourceCount;
+      let sources = this.DWObject.GetSourceNames();
       this.selectSources = <HTMLSelectElement>document.getElementById("sources");
       this.selectSources.options.length = 0;
-      for (let i = 0; i < count; i++) {
-        this.selectSources.options.add(new Option(this.DWObject.GetSourceNameItems(i), i.toString()));
+      for (let i = 0; i < sources.length; i++) {
+        this.selectSources.options.add(new Option(<string>sources[i], i.toString()));
       }
     }
   }
