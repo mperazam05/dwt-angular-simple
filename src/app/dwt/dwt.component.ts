@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Dynamsoft from 'dwt';
-import { WebTwain } from 'dwt/WebTwain';
+import { WebTwain } from 'dwt/dist/types/WebTwain';
 
 @Component({
   selector: 'app-dwt',
@@ -17,7 +17,7 @@ export class DwtComponent implements OnInit {
   ngOnInit(): void {
     Dynamsoft.WebTwainEnv.Containers = [{ WebTwainId: 'dwtObject', ContainerId: this.containerId, Width: '300px', Height: '400px' }];
     Dynamsoft.WebTwainEnv.RegisterEvent('OnWebTwainReady', () => { this.Dynamsoft_OnReady(); });
-    Dynamsoft.WebTwainEnv.ProductKey = 't0102MQEAAFL4GiiJnvpjSMifElJ8wiBBu9gg2Qj7H8AxfWKMtm8aS2QOBZ+1e6mqUpKNRwaInJLXm4NaYuKpF1cdzdIWcONnZAZ5jPlM4dce/ulKETjaWFr9LpWb+cwxTWIWrQMSMD0Q';
+    Dynamsoft.WebTwainEnv.ProductKey = 't00921wAAAFYTYbgeiIdPK/NgJGUa+hoxpIV23O5q0c3iJmgz9SNsUIdL+FXtlfepBdbdSwiOHFSHPHA8y+SbtM5LGx2Bq+HeJUMV3kCdQNkBuiQoux/EPZaxC1UGK3k=';
     Dynamsoft.WebTwainEnv.ResourcesPath = 'assets/dwt-resources';
     let checkScript = () => {
       if (Dynamsoft.Lib.detect.scriptLoaded) {
