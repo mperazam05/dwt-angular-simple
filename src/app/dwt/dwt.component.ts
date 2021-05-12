@@ -11,13 +11,13 @@ export class DwtComponent implements OnInit {
   DWObject: WebTwain;
   selectSources: HTMLSelectElement;
   containerId = 'dwtcontrolContainer';
-  bWASM = Dynamsoft.Lib.env.bMobile || !Dynamsoft.DWT.UseLocalService;
+  bWASM = false;
   constructor() { }
 
   ngOnInit(): void {
     Dynamsoft.DWT.Containers = [{ WebTwainId: 'dwtObject', ContainerId: this.containerId, Width: '300px', Height: '400px' }];
     Dynamsoft.DWT.RegisterEvent('OnWebTwainReady', () => { this.Dynamsoft_OnReady(); });
-    Dynamsoft.DWT.ProductKey = 't00891wAAABbdLEJATW3/5y5Z9zPHbvN0BoZRljs0AswZsu9Athx99uwWOdwzNYI2VwhYWZut2jfa3p+5RVLaTxvM3OPKwwcuBOa7BeQO0gQ1DWCGJVMMN2gAK5g=';
+    Dynamsoft.DWT.ProductKey = 't00901wAAAFWG3iQa7V439k0DgGpmB6s4Rmz1VHLwubjWRQAlDUX/af1K0niJCExdUWQFZNehlPh9L86TLIUXzz+xH7JoS8HK3wbFereBMoAt4GkCEd9CVjTTIyyt';
     Dynamsoft.DWT.ResourcesPath = 'assets/dwt-resources';
     let checkScript = () => {
       if (Dynamsoft.Lib.detect.scriptLoaded) {
@@ -34,6 +34,7 @@ export class DwtComponent implements OnInit {
    */
   Dynamsoft_OnReady(): void {
     this.DWObject = Dynamsoft.DWT.GetWebTwain(this.containerId);
+	this.bWASM = Dynamsoft.Lib.env.bMobile || !Dynamsoft.DWT.UseLocalService;
     if (this.bWASM) {
       this.DWObject.Viewer.cursor = "pointer";
     } else {
